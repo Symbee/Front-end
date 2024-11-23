@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+
+.section4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(img/section4bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    & .layout{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 1400px;
+        
+    
+         & .cards-pq{
+        
+            flex-direction: row;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            gap: 30px;
+          
+        } 
+    }
+}
+
+.pergunta-symbee{
+    font-family: 'Poppins', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.beneficio-mutuo{
+    
+    height: 100%;
+    width: 100%;
+    background-color: #1E1D1D;
+    border-radius: 36px;
+    color: #EAEAEA;
+    text-align: center;
+    font-size: 35px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & .bm-bm{
+        color: #FABC3F;
+        font-size: 35px;
+    }
+    & .bm-symbee{
+        color: #FABC3F;
+    }
+
+    & .girassol-abelha{
+        display: flex;
+    }
+}
+
