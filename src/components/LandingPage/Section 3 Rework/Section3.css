@@ -1,0 +1,64 @@
+
+.section3-Swiper{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background-color:  #EE9B11;
+    width: 100vw;
+    
+        
+    & .swiper-cards{
+        width: 400px;
+        height: 450px;
+        background-color: #1E1D1D;
+        border-radius: 23px;
+        display: flex;
+        color: aliceblue;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        
+        
+        & .swiper-cards-title {
+            font-size: 40px;
+            font-weight: 600;
+            & .swiper-cards-title-palavra{
+                font-size: 40px;
+                font-weight: 600;
+                color: #EE9B11;
+
+                &.swiper-cards-titulo-paragraph{
+                    font-size: 200px;
+                }
+            }
+        }
+        
+    
+    }
+}
+
+.swiper-container {
+    position: relative;
+    
+    
+    
+  }
+  
+  .swiper-slide {
+    transition: filter 1s ease;
+    
+    
+    
+  }
+  
+
+  .swiper-slide:not(.swiper-slide-active) {
+    filter: blur(6px); 
+    opacity: 100;
+    
+  }
+  
+  .swiper-slide.swiper-slide-active {
+    filter: none;
+    opacity: 1;
+  }
