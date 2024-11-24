@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap");
+
+.section-forms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(
+    0deg,
+    rgba(30, 29, 29, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  .forms {
+    width: 500px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+
+    .title-contato {
+      font-size: 35px;
+      color: rgb(255, 255, 255);
+      text-align: center;
+    }
+
+    .form-contato {
+      color: #000000;
+      font-size: 20px;
+      
+        .campo{
+            color: #ee9b11;
+        }
+      .form-campo,
+      #mensagem {
+        border-radius: 7px;
+        width: 100%;
+      }
+      .form-campo::placeholder,
+      #mensagem::placeholder {
+        color: #cccccc;
+        font-size: 16px;
+        font-style: italic;
+        padding: 7px;
+        display: flex;
+        align-items: center;
+      }
+
+      .form-campo {
+        height: 40px;
+        display: flex;
+        
+      }
+
+      #mensagem {
+        height: 100%;
+      }
+
+      .form-botao {
+        background-color: #ee9b11;
+        border-radius: 7px;
+        color: rgb(253, 254, 255);
+        padding: 10px 20px;
+        margin: 20px auto 0;
+        display: block;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+  }
+}

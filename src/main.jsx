@@ -19,6 +19,8 @@ import DescricaoDeProjetos from "./components/Descrição dos Projetos/Descricao
 import Assinaturas from "./components/Assinaturas/Assinaturas";
 import Section4 from "./components/LandingPage/Section 4 Rework/Section4";
 import Carrossel from "./components/LandingPage/Section 3 Rework/Section3";
+import Contato from "./components/Contato/Contato";
+import Error from "./components/404/Error";
 
 createRoot(document.getElementById("root")).render(
   <Router>
@@ -39,7 +41,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/about-us" element={<SobreNos />}/>
         <Route path="/project-description" element={<DescricaoDeProjetos />}/>
         <Route path="/assinaturas" element={<Assinaturas />}/>
-        <Route path="/dev" element={<Carrossel />}/>
+        <Route path="/dev" element={<Error />}/>
+        <Route path="/contato" element={<Contato/>}/>
       </Route>
     </Routes>
   </Router>
