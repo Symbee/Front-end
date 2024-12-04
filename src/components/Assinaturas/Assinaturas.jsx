@@ -13,13 +13,18 @@ const Assinaturas = () => {
         <hr class="w-40 h-1 mx-auto my-4 bg-customBlack border-0 rounded md:my-10 opacity-100"></hr>
         <div className={styles.plansContainer}>
           <div className={styles.planWorker}>
-<h2>Operários</h2>
-
+            <h2>Operários</h2>
           </div>
           <div className={styles.planQueen}></div>
         </div>
       </section>
-      <Footer symbee={{color:"black"}} footer={{backgroundImage:"none"}} links={{color: "black"}} icones={{backgroundColor: "rgba(0,0,0,0.5)",}} stroke="black"/>
+      <Footer
+        symbee={{ color: "black" }}
+        footer={{ backgroundImage: "none" }}
+        links={{ color: "black" }}
+        icones={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+        stroke="black"
+      />
     </main>
   );
 };

@@ -3,7 +3,7 @@ import Girassol from "./assets/Girassol";
 import Abelha from "./assets/Abelha";
 import "./section4.css";
 
-function Section4() {
+function Section4Rework() {
   return (
     <section className="section4">
       <div className="layout">
@@ -47,4 +47,4 @@ function Section4() {
   );
 }
 
-export default Section4;
+export default Section4Rework;

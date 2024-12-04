@@ -1,0 +1,70 @@
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 100vh;
+  /* margin: 0 10rem; */
+
+  & .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & .subTitle {
+      color: var(--daisy);
+    }
+    & #description {
+      color: var(--honey);
+    }
+
+    & .beehive {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      gap: 1.6rem;
+
+      & .honey {
+        color: var(--stinger);
+        font-weight: 500;
+        font-size: 1.5rem;
+        background-color: var(--honey);
+        padding: 10px 20px;
+        border-radius: 50px;
+        box-shadow: -5px 5px var(--beehive),
+          inset -6px 4px 10px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  & .users_ranking{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & .top{
+        position: relative;
+        width: fit-content;
+        background-color: var(--daisy);
+        box-shadow: 0 10px 14px rgba(0,0,0,0.2);
+        padding: 30px 80px ;
+        /* scale: 1.2; */
+        border-radius: 40px;
+        top: 3%;
+        right: 0;
+    }
+
+    & .others{
+        max-width: fit-content;
+        background-color: var(--daisy);
+        padding: 30px;
+        border-radius: 0 0 40px 40px;
+    }
+
+  }
+}

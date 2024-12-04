@@ -5,7 +5,7 @@ import "./Num.css";
 function Num(props) {
   return (
     <div className="numberRanking">
-      <div className="colocacao" style={{background: props.bg, color: props.color}}>{props.colocacao}</div>
+      <div className="colocacao" style={{background: props.bg, color: props.color, scale: props.scale}}>{props.colocacao}</div>
       <div id="dot">
         <i class="fa-solid fa-circle" style={{ color: props.dotColor }}></i>
       </div>
@@ -13,7 +13,7 @@ function Num(props) {
         <Bee stroke={props.stroke} />
       </div>
       <div>
-        <p>{props.nome}</p>
+        <p style={{fontSize: props.fonte}}>{props.nome}</p>
       </div>
     </div>
   );

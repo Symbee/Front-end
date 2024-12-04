@@ -1,70 +1,170 @@
 import React from "react";
-import "./cadastro.css";
-import iconeGitPreto from "./img/iconeGitPreto.png";
-import iconeGoogle from "./img/iconeGoogle.png";
-import iconeLinkedin from "./img/iconeLinkedin.png";
+import styles from "./cadastro.module.css";
 import Vetor from "./img/vetor.png";
+import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import axios from "axios";
 
 const Cadastro = () => {
-  const navegar = useNavigate();
+  const navigate = useNavigate();
 
-  const handleProfileChoice = () => {
-    navegar("/profile-choice");
-  };
-  const handlePremium = () => {
-    navegar("/premium");
+  const regraSenha = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+  // min 8 caracteres, 1 letra maiúsucla, 1 letra minuscual, 1 numero.
+
+  const validationRegister = yup.object().shape({
+    first_name: yup
+      .string()
+      .min(3, "Deve conter pelo menos 3 caractéres.")
+      .required("Esse campo é obrigatório."),
+    last_name: yup
+      .string()
+      .min(3, "Deve conter pelo menos 3 caractéres.")
+      .required("Esse campo é obrigatório."),
+    email: yup
+      .string()
+      .email("Precisa ser um e-mail válido.")
+      .min(5, "Deve conter pelo menos 3 caractéres.")
+      .required("Esse campo é obrigatório."),
+    cpf: yup
+      .string()
+      .min(11, "Deve conter pelo menos 11 caractéres.")
+      .max(11, "CPF inválido")
+      .required("Esse campo é obrigatório."),
+    data_nascimento: yup
+      .string()
+      // .min(11, "Deve conter pelo menos 11 caractéres.")
+      .required("Esse campo é obrigatório."),
+    password: yup
+      .string()
+      .matches(regraSenha, { message: "Por favor, crie uma senha mais forte!" })
+      .required("Esse campo é obrigatório."),
+  });
+
+  const handleClickRegister = (values) => {
+    axios
+      .post("http://localhost:3000/registro", {
+        first_name: values.first_name,
+        last_name: values.last_name,
+        email: values.email,
+        cpf: values.cpf,
+        data_nascimento: values.data_nascimento,
+        password: values.password,
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.data.msg == "Usuário cadastrado com sucesso.") {
+          navigate("/profile-choice");
+        } else {
+          alert(response.data); // Mensagem do servidor, como "Usuário já está cadastrado."
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.error("Erro no servidor:", error.response.data);
+        } else {
+          console.error("Erro na requisição:", error.message);
+        }
+      });
   };
 
   return (
-    <section className="RegisterPage">
-      <div className="layout">
-        <div className="fieldInformations">
-          <div className="titleInf">
-            <h2>Seja muito bem vindo!</h2>
-          </div>
-          <div className="informations">
-            <div className="nameAnSurname">
-              <input type="text" placeholder="Primeiro nome" />
-              <input type="text" placeholder="Sobrenome" />
-            </div>
-            <div className="outerInf">
-              <input type="email" placeholder="Endereço de e-mail" />
-              <input type="text" placeholder="CPF" />
-              <input type="text" placeholder="Data de nascimento" />
-              <input type="password" placeholder="Senha" />
-            </div>
-            <div className="checkbox">
-              <input type="checkbox" name="terms" id="termsUse" />{" "}
-              <p>Eu concordo com os termos de uso do usuário</p>
-            </div>
-            <div className="register">
-              <a id='cadastrar' onClick={handleProfileChoice}>Cadastrar-se</a>
-            </div>
-            <div className="social-buttons">
-              <button onClick={handlePremium}>
-                Entrar com GitHub
-                <div className="gitImg">
-                  <img src={iconeGitPreto} alt="icon GitHub" />
-                </div>
+    <section className={styles.RegisterPage}>
+      <div className={styles.layout}>
+        <div className={styles.fieldInformations}>
+          <h2>Seja muito bem vindo!</h2>
+
+          <Formik
+            className="informations"
+            initialValues={{
+              first_name: "",
+              last_name: "",
+              email: "",
+              cpf: "",
+              data_nascimento: "",
+              password: "",
+            }}
+            onSubmit={handleClickRegister}
+            validationSchema={validationRegister}
+          >
+            <Form className="register-form">
+              <div className="input-field">
+                <Field
+                  name="first_name"
+                  className="form-field"
+                  placeholder="Primeiro nome"
+                />
+                <ErrorMessage
+                  component="span"
+                  name="first_name"
+                  className="form-error"
+                />
+              </div>
+              <div className="input-field">
+                <Field
+                  name="last_name"
+                  className="form-field"
+                  placeholder="Último nome"
+                />
+                <ErrorMessage
+                  component="span"
+                  name="last_name"
+                  className="form-error"
+                />
+              </div>
+              <div className="input-field">
+                <Field
+                  name="email"
+                  className="form-field"
+                  placeholder="E-mail"
+                />
+                <ErrorMessage
+                  component="span"
+                  name="email"
+                  className="form-error"
+                />
+              </div>
+              <div className="input-field">
+                <Field name="cpf" className="form-field" placeholder="CPF" />
+                <ErrorMessage
+                  component="span"
+                  name="cpf"
+                  className="form-error"
+                />
+              </div>
+              <div className="input-field">
+                <Field
+                  name="data_nascimento"
+                  className="form-field"
+                  placeholder="Data de nascimento"
+                  type="date"
+                />
+                <ErrorMessage
+                  component="span"
+                  name="data_nascimento"
+                  className="form-error"
+                />
+              </div>
+              <div className="input-field">
+                <Field
+                  name="password"
+                  className="form-field"
+                  placeholder="Digite sua senha."
+                  type="password"
+                />
+                <ErrorMessage
+                  component="span"
+                  name="password"
+                  className="form-error"
+                />
+              </div>
+              <button type="submit" className="button">
+                Enviar
               </button>
-              <button onClick={handlePremium}>
-                Entrar com Google
-                <div className="imgGoogle">
-                  <img src={iconeGoogle} alt="icon Google" />
-                </div>
-              </button>
-              <button onClick={handlePremium}>
-                {" "}
-                <div className="imgLinkedin">
-                  Entrar com LinkedIn
-                  <img src={iconeLinkedin} alt="icon linkedin" />
-                </div>
-              </button>
-            </div>
-          </div>
+            </Form>
+          </Formik>
         </div>
-        <div className="svgLogo">
+        <div className={styles.svgLogo}>
           <img src={Vetor} alt="" />
         </div>
       </div>

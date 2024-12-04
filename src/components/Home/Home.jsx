@@ -9,14 +9,18 @@ function Home() {
       <section className="home-page">
         <div className="left-side">
           <h2 className="acquire-premium text-blue-800">Adquira o premium!</h2>
-          <a className="hierarchy shadow-inner bg-blue-800" href="#" role="button">
+          <a
+            className="hierarchy shadow-inner bg-blue-800"
+            href="#"
+            role="button"
+          >
             <span>Suba na hierarquia!</span>
           </a>
           <hr className="w-48 h-1 my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
-          
+
           <div className="profile">
             <div className="profile-picture">
-              <Bee stroke="#000000"/>
+              <Bee stroke="#000000" />
             </div>
             <div className="profile-info">
               <span id="nickname">Kay_bonjour</span>
@@ -53,9 +57,14 @@ function Home() {
             <hr className="w-48 h-1 my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
           </div>
 
-          <a className="hierarchy2 shadow-inner bg-yellow-400" href="#" role="button">
+          <a
+            className="hierarchy2 shadow-inner bg-yellow-400"
+            href="#"
+            role="button"
+          >
             <span>
-              <i className="fa-solid fa-magnifying-glass"></i> Busque projetos com a Bee!
+              <i className="fa-solid fa-magnifying-glass"></i> Busque projetos
+              com a Bee!
             </span>
           </a>
         </div>
